@@ -1,36 +1,30 @@
-interface CodeBlock {
-  type: "code";
-  language: string;
+interface MessageBlock {
+  type: "text" | "code";
   content: string;
+  language?: string;
 }
 
-interface TextBlock {
-  type: "text";
-  content: string;
-}
-
-type MessageBlock = CodeBlock | TextBlock;
-
-export const parseMessage = (message: string): MessageBlock[] => {
-  const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
+export function parseMessage(message: string): MessageBlock[] {
   const blocks: MessageBlock[] = [];
+  const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
+  const boldTextRegex = /\*\*(.*?)\*\*/g;
   let lastIndex = 0;
   let match;
 
   while ((match = codeBlockRegex.exec(message)) !== null) {
-    // Añadir texto antes del bloque de código si existe
+    // Añadir texto antes del bloque de código
     if (match.index > lastIndex) {
-      blocks.push({
-        type: "text",
-        content: message.slice(lastIndex, match.index).trim(),
-      });
+      let textContent = message.slice(lastIndex, match.index);
+      // Procesar texto en negrita
+      textContent = textContent.replace(boldTextRegex, "<strong>$1</strong>");
+      blocks.push({ type: "text", content: textContent });
     }
 
-    // Añadir el bloque de código
+    // Añadir bloque de código
     blocks.push({
       type: "code",
+      content: match[2],
       language: match[1] || "plaintext",
-      content: match[2].trim(),
     });
 
     lastIndex = match.index + match[0].length;
@@ -38,11 +32,11 @@ export const parseMessage = (message: string): MessageBlock[] => {
 
   // Añadir el texto restante después del último bloque de código
   if (lastIndex < message.length) {
-    blocks.push({
-      type: "text",
-      content: message.slice(lastIndex).trim(),
-    });
+    let remainingText = message.slice(lastIndex);
+    // Procesar texto en negrita en el texto restante
+    remainingText = remainingText.replace(boldTextRegex, "<strong>$1</strong>");
+    blocks.push({ type: "text", content: remainingText });
   }
 
   return blocks;
-};
+}

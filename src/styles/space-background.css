@@ -1,0 +1,96 @@
+/* Space background animation */
+.space-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  overflow: hidden;
+  z-index: -1;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.3; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0.3; transform: scale(0.9); }
+}
+
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.star {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: inset -25px -25px 40px rgba(0,0,0,.5);
+}
+
+.stars:before, .stars:after {
+  content: " ";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 
+    1vw 1vh 0 2px rgba(255, 255, 255, 0.8),
+    2vw 35vh 0 1px rgba(255, 255, 255, 0.7),
+    5vw 15vh 0 2px rgba(255, 255, 255, 0.9),
+    10vw 25vh 0 1px rgba(255, 255, 255, 0.6),
+    15vw 45vh 0 2px rgba(255, 255, 255, 0.8),
+    20vw 85vh 0 1px rgba(255, 255, 255, 0.7),
+    25vw 65vh 0 2px rgba(255, 255, 255, 0.9),
+    30vw 95vh 0 1px rgba(255, 255, 255, 0.8),
+    35vw 5vh 0 2px rgba(255, 255, 255, 0.7),
+    40vw 55vh 0 1px rgba(255, 255, 255, 0.9),
+    45vw 75vh 0 2px rgba(255, 255, 255, 0.8),
+    50vw 15vh 0 1px rgba(255, 255, 255, 0.6),
+    55vw 25vh 0 2px rgba(255, 255, 255, 0.7),
+    60vw 35vh 0 1px rgba(255, 255, 255, 0.8),
+    65vw 45vh 0 2px rgba(255, 255, 255, 0.9),
+    70vw 55vh 0 1px rgba(255, 255, 255, 0.6),
+    75vw 65vh 0 2px rgba(255, 255, 255, 0.7),
+    80vw 75vh 0 1px rgba(255, 255, 255, 0.8),
+    85vw 85vh 0 2px rgba(255, 255, 255, 0.9),
+    90vw 95vh 0 1px rgba(255, 255, 255, 0.7),
+    95vw 5vh 0 2px rgba(255, 255, 255, 0.8);
+  animation: twinkle 4s infinite;
+}
+
+/* Planet styles */
+.planet-1 {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  top: 15%;
+  right: 10%;
+  animation: orbit 20s infinite linear;
+}
+
+.planet-2 {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(45deg, #4facfe, #00f2fe);
+  top: 60%;
+  left: 15%;
+  animation: orbit 30s infinite linear reverse;
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}

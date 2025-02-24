@@ -1,0 +1,567 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+.dark {
+  --background: 240 10% 4%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 4%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 4%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
+  --secondary: 240 4% 16%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 4% 16%;
+  --muted-foreground: 240 5% 65%;
+  --accent: 240 4% 16%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 4% 16%;
+  --input: 240 4% 16%;
+  --ring: 240 4% 16%;
+}
+
+@layer utilities {
+  .animate-pulse-subtle {
+    animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-gradient {
+    animation: gradient 8s linear infinite;
+    background-size: 200% 200%;
+  }
+
+  .input-glow:focus {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3),
+      0 0 30px rgba(59, 130, 246, 0.2), 0 0 45px rgba(59, 130, 246, 0.1);
+  }
+
+  .button-glow {
+    animation: button-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes button-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px 0 rgba(59, 130, 246, 0.4);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Efecto de brillo para el texto */
+.text-glow {
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+/* Efecto de cristal */
+.glass-morphism {
+  backdrop-filter: blur(10px);
+  background: rgba(17, 25, 40, 0.75);
+}
+
+/* Efecto de hover para botones */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+}
+
+/* Estilos para el input */
+.input-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.input-container::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    rgba(59, 130, 246, 0.3),
+    rgba(147, 51, 234, 0.3),
+    rgba(59, 130, 246, 0.3)
+  );
+  z-index: -1;
+  animation: border-animate 3s linear infinite;
+  border-radius: 14px;
+}
+
+@keyframes border-animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes borderGlow {
+  0% {
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+  }
+  50% {
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+  }
+  100% {
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+  }
+}
+
+.animate-border-glow {
+  animation: borderGlow 2s ease-in-out infinite;
+}
+
+/* Resto de los estilos existentes... */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+.text-shadow-glow {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.2),
+    0 0 40px rgba(59, 130, 246, 0.2);
+}
+
+/* Estilos para imágenes en mensajes */
+.message-image {
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.message-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Efecto de difuminado superior para mensajes */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.3) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(59, 130, 246, 0.3);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(59, 130, 246, 0.5);
+}
+
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+  transform-origin: left center;
+  animation: typing-container 2s infinite;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.6), rgba(59, 130, 246, 0.8));
+  border-radius: 50%;
+  animation: typing-dot 1.4s infinite ease-in-out;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+}
+
+.typing-indicator span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0s;
+}
+
+@keyframes typing-dot {
+  0%, 80%, 100% {
+    transform: scale(0.6) translateY(0);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1) translateY(-8px);
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+  }
+}
+
+@keyframes typing-container {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.98);
+  }
+}
+
+/* Estilos para texto en negrita en los mensajes */
+.prose strong {
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
+}
+
+/* Estilos para la página de inicio */
+.home-container {
+  @apply min-h-screen bg-[#1a1b26] relative overflow-hidden;
+}
+
+/* Animación de estrellas */
+@keyframes twinkle {
+  0% { opacity: 0.8; }
+  50% { opacity: 0.4; }
+  100% { opacity: 0.8; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes rotateMoon {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Efecto de estrellas mejorado */
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(1px 1px at 20px 30px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, #7aa2f7, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 50px 160px, #fff, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 90px 40px, #7aa2f7, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 130px 80px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, #7aa2f7, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 200px 50px, #fff, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 250px 180px, #7aa2f7, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 300px 100px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 350px 150px, #7aa2f7, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 400px 80px, #fff, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 450px 200px, #7aa2f7, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 500px 60px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 550px 170px, #7aa2f7, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 600px 90px, #fff, rgba(0,0,0,0));
+  background-size: 600px 600px;
+  background-repeat: repeat;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+/* Logo lunar mejorado */
+.lunar-logo {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  margin: 0 auto 2rem;
+  animation: float 6s ease-in-out infinite;
+}
+
+.lunar-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  border: 3px solid transparent;
+  border-top-color: #7aa2f7;
+  border-right-color: #7aa2f7;
+  animation: rotateMoon 20s linear infinite;
+  filter: drop-shadow(0 0 15px rgba(122,162,247,0.5));
+}
+
+/* Campos de formulario modernos */
+.form-container {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.input-field {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: rgba(26,27,38,0.6);
+  border: 2px solid rgba(122,162,247,0.1);
+  border-radius: 12px;
+  color: #fff;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+}
+
+.input-field:hover {
+  background: rgba(26,27,38,0.7);
+  border-color: rgba(122,162,247,0.2);
+}
+
+.input-field:focus {
+  background: rgba(26,27,38,0.8);
+  border-color: rgba(122,162,247,0.4);
+  box-shadow: 0 0 0 4px rgba(122,162,247,0.1);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+.input-field::placeholder {
+  color: rgba(154,165,206,0.8);
+  font-weight: 500;
+}
+
+/* Botón de submit mejorado */
+.submit-button {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(45deg, #7aa2f7, #89b4ff);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 15px rgba(122,162,247,0.3);
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(122,162,247,0.4);
+  background: linear-gradient(45deg, #89b4ff, #98c3ff);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(122,162,247,0.2);
+}
+
+/* Contenedor principal con fondo nocturno */
+.night-container {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100vw;
+  background: linear-gradient(180deg, 
+    #0a0b14 0%,
+    #1a1b26 50%,
+    #252838 100%
+  );
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Removemos la animación de twinkle */
+.stars {
+  animation: none;
+}
+
+/* Ajustamos el logo para que sea más sutil */
+.lunar-logo {
+  opacity: 0.9;
+  filter: drop-shadow(0 0 20px rgba(122,162,247,0.3));
+}
+
+/* Mejoramos el contraste del contenido */
+.content-container {
+  z-index: 1;
+  padding: 2.5rem;
+  background: rgba(26,27,38,0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(122,162,247,0.1);
+  margin: 2rem;
+  max-width: 420px;
+}
+
+/* Logo lunar */
+.lunar-logo {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  margin: 0 auto 2rem;
+}
+
+.lunar-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  border: 3px solid transparent;
+  border-top-color: #7aa2f7;
+  border-right-color: #7aa2f7;
+  filter: drop-shadow(0 0 15px rgba(122,162,247,0.5));
+}
+
+.lunar-circle::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: #1a1b26;
+  border: 3px solid transparent;
+  border-bottom-color: #7aa2f7;
+  border-left-color: #7aa2f7;
+  opacity: 0.3;
+  filter: blur(8px);
+}
+
+/* Contenedor del contenido */
+.content-container {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  z-index: 1;
+  padding: 2.5rem;
+  background: rgba(26,27,38,0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(122,162,247,0.1);
+  margin: 2rem;
+}
+
+/* Título y subtítulos */
+.title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(to right, #fff, #7aa2f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(122,162,247,0.3));
+}
+
+.subtitle {
+  color: #7aa2f7;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.description {
+  color: #9aa5ce;
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+/* Formulario con mejor espaciado */
+.form-container {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+/* Estilos base */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #1a1b26;
+  color: #fff;
+  overflow-x: hidden;
+}
