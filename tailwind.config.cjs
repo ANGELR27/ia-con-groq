@@ -1,0 +1,121 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: ["class"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        blue: {
+          dark: "#0D192D",
+          light: "#4299E1",
+          glow: "rgba(66, 153, 225, 0.2)",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      animation: {
+        "fade-in": "fadeIn 0.3s ease-in-out",
+        "slide-in": "slideIn 0.4s ease-out",
+        "slide-in-left": "slideInLeft 0.4s ease-out",
+        "slide-in-right": "slideInRight 0.4s ease-out",
+        float: "float 3s ease-in-out infinite",
+        pulse: "pulse 2s infinite",
+        glow: "glow 2s ease-in-out infinite",
+      },
+      keyframes: {
+        fadeIn: {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        slideIn: {
+          from: { transform: "translateY(20px)", opacity: "0" },
+          to: { transform: "translateY(0)", opacity: "1" },
+        },
+        slideInLeft: {
+          from: { transform: "translateX(-20px)", opacity: "0" },
+          to: { transform: "translateX(0)", opacity: "1" },
+        },
+        slideInRight: {
+          from: { transform: "translateX(20px)", opacity: "0" },
+          to: { transform: "translateX(0)", opacity: "1" },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        pulse: {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.05)" },
+        },
+        glow: {
+          "0%, 100%": { boxShadow: "0 0 5px rgba(66, 153, 225, 0.1)" },
+          "50%": { boxShadow: "0 0 20px rgba(66, 153, 225, 0.2)" },
+        },
+      },
+      backdropBlur: {
+        xs: "2px",
+      },
+      boxShadow: {
+        glow: "0 0 15px rgba(66, 153, 225, 0.2)",
+        glass:
+          "0 8px 32px rgba(0, 0, 0, 0.37), inset 0 0 0 0.5px rgba(66, 153, 225, 0.1)",
+        "blue-sm": "0 2px 4px rgba(66, 153, 225, 0.1)",
+        "blue-md": "0 4px 6px rgba(66, 153, 225, 0.1)",
+        "blue-lg": "0 10px 15px rgba(66, 153, 225, 0.1)",
+      },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-blue":
+          "linear-gradient(135deg, rgba(66, 153, 225, 0.1) 0%, rgba(13, 25, 45, 0.2) 100%)",
+      },
+      transitionDuration: {
+        2000: "2000ms",
+        3000: "3000ms",
+      },
+    },
+  },
+  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
+};

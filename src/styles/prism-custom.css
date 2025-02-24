@@ -1,0 +1,175 @@
+/* Estilos base para el resaltado de código */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #f8f8f2;
+  background: none;
+  font-family: "JetBrains Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
+    monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  tab-size: 4;
+  hyphens: none;
+}
+
+/* Tokens */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6272a4;
+}
+
+.token.punctuation {
+  color: #f8f8f2;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #ff79c6;
+}
+
+.token.boolean,
+.token.number {
+  color: #bd93f9;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #50fa7b;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #f1fa8c;
+}
+
+.token.keyword {
+  color: #ff79c6;
+}
+
+.token.regex,
+.token.important {
+  color: #ffb86c;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+/* Línea resaltada */
+.line-highlight {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Estilos base para los bloques de código */
+pre[class*="language-"] {
+  margin: 0;
+  padding: 1rem;
+  background: var(--prism-bg, #1e1e1e);
+  border-radius: 0.5rem;
+}
+
+/* Estilos para los números de línea */
+.line-numbers .line-numbers-rows {
+  border-right: 1px solid #404040;
+  padding-right: 1rem;
+}
+
+.line-numbers-rows > span:before {
+  color: #6b7280;
+}
+
+/* Tema Tomorrow Night */
+.theme-tomorrow {
+  --prism-bg: #1e1e1e;
+}
+
+/* Tema Okaidia */
+.theme-okaidia {
+  --prism-bg: #272822;
+}
+
+/* Tema Solarized Light */
+.theme-solarizedlight {
+  --prism-bg: #fdf6e3;
+}
+
+/* Ajustes de scroll */
+pre[class*="language-"]::-webkit-scrollbar {
+  height: 6px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb {
+  background: #4a5568;
+  border-radius: 3px;
+}
+
+pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+  background: #718096;
+}
+
+/* Ajustes para el botón de copiar */
+.copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+pre:hover .copy-button {
+  opacity: 1;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.settings-panel {
+  animation: fadeIn 0.2s ease-in-out;
+}
